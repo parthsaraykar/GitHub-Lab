@@ -1,0 +1,14 @@
+artifact_uri: /Users/parthsaraykar/Desktop/MLOps/Labs/Github_Labs/Lab2/mlruns/487219464864981149/8c0d1359c96840f18d7d32af97793aea/artifacts
+end_time: 1759806354881
+entry_point_name: ''
+experiment_id: '487219464864981149'
+lifecycle_stage: active
+run_id: 8c0d1359c96840f18d7d32af97793aea
+run_name: DecisionTreeClassifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759806354798
+status: 3
+tags: []
+user_id: parthsaraykar

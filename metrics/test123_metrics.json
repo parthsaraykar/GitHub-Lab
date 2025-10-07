@@ -1,0 +1,7 @@
+{
+    "run_id": "test123",
+    "model_file": "models/model_test123_dt.joblib",
+    "accuracy": 0.917,
+    "f1_score": 0.908,
+    "timestamp": "2025-10-06T23:16:27.493275"
+}

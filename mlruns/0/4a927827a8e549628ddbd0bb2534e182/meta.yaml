@@ -1,0 +1,14 @@
+artifact_uri: /Users/parthsaraykar/Desktop/MLOps/Labs/Github_Labs/Lab2/mlruns/0/4a927827a8e549628ddbd0bb2534e182/artifacts
+end_time: 1759806987491
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4a927827a8e549628ddbd0bb2534e182
+run_name: Eval_test123
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759806987467
+status: 3
+tags: []
+user_id: parthsaraykar
