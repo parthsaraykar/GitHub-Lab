@@ -11,52 +11,47 @@ jobs:
     name: Train, Evaluate, and Version Model
 
     steps:
-    - name:  Checkout Repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name:  Set Up Python Environment
+    - name: Set Up Python Environment
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
-    - name:  Install Project Dependencies
+    - name: Install Project Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name:  Generate Timestamp for Version Tracking
+    - name: Generate Timestamp for Version Tracking
       id: gen_time
       run: echo "$(date '+%Y%m%d%H%M%S')" > version_stamp.txt
 
-    - name:  Verify Training Script Access
+    - name: Verify Training Script Access
       run: ls -l ./src/train_model.py
 
-    - name:  Ensure Executable Permissions
+    - name: Ensure Executable Permissions
       run: chmod +x ./src/train_model.py
 
-    - name:  Run Model Training
+    - name: Run Model Training
       run: |
         ts=$(cat version_stamp.txt)
         python ./src/train_model.py --run_id "$ts"
 
-    - name:  Evaluate Model Performance
+    - name: Evaluate Model Performance
       run: |
         ts=$(cat version_stamp.txt)
         python ./src/evaluate_model.py --run_id "$ts"
-        mv metrics.json "metrics/${ts}_metrics.json"
       continue-on-error: false
 
-    - name:  Store and Version Trained Model
+    - name: Commit Artifacts and Push
       run: |
         ts=$(cat version_stamp.txt)
-        mv model.joblib "models/model_${ts}.joblib"
-
-    - name:  Commit Artifacts and Push
-      run: |
-        git config --global user.email "yourname@users.noreply.github.com"
+        git config --global user.email "parthsaraykar@users.noreply.github.com"
         git config --global user.name "Parth Saraykar"
         git add models/ metrics/
-        git commit -m " Auto-update: model + metrics for run ${ts}"
+        git commit -m "🔄 Auto-update: model + metrics for run ${ts}" || echo "No changes to commit"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
